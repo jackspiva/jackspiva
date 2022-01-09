@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        serif: ['Newsreader', ...defaultTheme.fontFamily.serif],
       },
       colors: {
         transparent: 'transparent',

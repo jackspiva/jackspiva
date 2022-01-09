@@ -81,6 +81,19 @@ const Home: NextPage = () => {
                   url="https://www.chapchair.com"
                   summary="Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes."
                 />
+                <Project
+                  title="justinjones2020.com"
+                  year="2020"
+                  url="https://justinjones2020.com/"
+                  summary="Built a website for Justin Jones 2020 congress campaign."
+                />
+                <Project
+                  title="Using Select Instead of Pluck in ActiveRecord Queries"
+                  year="2019"
+                  url="https://www.chapchair.com"
+                  summary="Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes."
+                  type="post"
+                />
               </div>
             </RoughNotation>
           </div>

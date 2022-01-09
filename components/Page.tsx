@@ -19,7 +19,7 @@ export default function Page(props: PageProps) {
   }
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800">
+    <div className="bg-gray-100 dark:bg-gray-900">
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -47,10 +47,10 @@ export default function Page(props: PageProps) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="relative flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto text-gray-900 bg-gray-100 border-gray-200 dark:border-gray-700 sm:pb-16 dark:bg-gray-800 bg-opacity-60 dark:text-gray-100">
+        <nav className="relative flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto text-gray-900 bg-gray-100 border-gray-200 dark:border-gray-700 sm:pb-16 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
           <a
             href="#skip"
-            className="absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 left-12 focus:top-4 focus:translate-y-3 -top-8"
+            className="absolute px-4 py-3 transition-transform duration-200 transform -translate-y-12 focus:top-4 focus:translate-y-3 -top-8"
           >
             Skip to content
           </a>
@@ -58,7 +58,7 @@ export default function Page(props: PageProps) {
       </div>
       <main
         id="skip"
-        className="flex flex-col justify-center px-8 bg-gray-100 dark:bg-gray-800"
+        className="flex flex-col justify-center px-8 bg-gray-100 dark:bg-gray-900"
       >
         {children}
         <Footer />

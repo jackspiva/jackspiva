@@ -1,5 +1,5 @@
+import { ExternalLinkIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
-
 interface Props {
   title: string
   year: string
@@ -21,12 +21,12 @@ export default function Project({
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">
             <h4 className="w-full mb-2 font-normal text-gray-900 text-md dark:text-gray-100">
-              {title}{' '}
+              {title}&nbsp;
               <span
                 className={
                   type === 'project'
                     ? 'font-mono text-xs text-[#ea580c]'
-                    : 'font-mono text-xs text-[#dc2626]'
+                    : 'font-mono text-xs text-[#65a30d]'
                 }
               >
                 {`{`}

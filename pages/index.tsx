@@ -63,37 +63,9 @@ const Home: NextPage = () => {
               color={resolvedTheme === 'dark' ? '#94a3b8' : '#475569'}
             >
               <div>
-                <Project
-                  title="vocesdenashville.com"
-                  year="2021"
-                  url="https://www.vocesdenashville.com/"
-                  summary="Building a website for Voces, a women-owned cooperative that trains workers, mothers, and other Latinx community members to teach Spanish classes around our city."
-                />
-                <Project
-                  title="jackspiva.dev"
-                  year="2021"
-                  url="https://www.jackspiva.dev/"
-                  summary="Continuing to grow and evolve this site."
-                />
-                <Project
-                  title="chapchair.com"
-                  year="2020"
-                  url="https://www.chapchair.com"
-                  summary="Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes."
-                />
-                <Project
-                  title="justinjones2020.com"
-                  year="2020"
-                  url="https://justinjones2020.com/"
-                  summary="Built a website for Justin Jones 2020 congress campaign."
-                />
-                <Project
-                  title="Using Select Instead of Pluck in ActiveRecord Queries"
-                  year="2019"
-                  url="https://www.chapchair.com"
-                  summary="Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes."
-                  type="post"
-                />
+                {PROJECTS.map((project) => (
+                  <Project key={project.slug} {...project} />
+                ))}
               </div>
             </RoughNotation>
           </div>
@@ -104,3 +76,58 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+interface Project {
+  slug: string
+  title: string
+  year: string
+  url: string
+  summary: string
+  type?: string
+}
+
+const PROJECTS: Project[] = [
+  {
+    slug: 'voces',
+    title: 'vocesdenashville.com',
+    year: '2021',
+    url: 'https://www.vocesdenashville.com/',
+    summary:
+      'Building a website for Voces, a women-owned cooperative that trains workers, mothers, and other Latinx community members to teach Spanish classes around our city.',
+    type: 'project',
+  },
+  {
+    slug: 'jackspiva',
+    title: 'jackspiva.dev',
+    year: '2021',
+    url: 'https://www.jackspiva.dev/',
+    summary: 'Continuing to grow and evolve this site.',
+    type: 'project',
+  },
+  {
+    slug: 'chapchair',
+    title: 'chapchair.com',
+    year: '2020',
+    url: 'https://www.chapchair.com',
+    summary:
+      'Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes.',
+    type: 'project',
+  },
+  {
+    slug: 'justinjones',
+    title: 'justinjones2020.com',
+    year: '2020',
+    url: 'https://justinjones2020.com/',
+    summary: 'Built a website for the Justin Jones 2020 congress campaign.',
+    type: 'project',
+  },
+  {
+    slug: 'selectpluckpost',
+    title: 'Using Select Instead of Pluck in ActiveRecord Queries',
+    year: '2019',
+    url: 'https://www.chapchair.com',
+    summary:
+      'Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes.',
+    type: 'post',
+  },
+]

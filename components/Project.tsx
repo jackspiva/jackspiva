@@ -1,4 +1,3 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 interface Props {
   title: string

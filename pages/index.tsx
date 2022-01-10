@@ -1,16 +1,13 @@
 import Page from '@components/Page'
 import Project from '@components/Project'
-import DarkModeButton from '@components/DarkModeButton'
 import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 import Header from '@components/Header'
 
 const Home: NextPage = () => {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
 
-  // After mounting, we have access to the theme
   return (
     <Page showHeader={false} animateHeader={false}>
       <RoughNotationGroup>

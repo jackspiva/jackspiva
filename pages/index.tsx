@@ -64,7 +64,13 @@ const Home: NextPage = () => {
             >
               <div>
                 {PROJECTS.map((project) => (
-                  <Project key={project.slug} {...project} />
+                  <Project
+                    key={project.slug}
+                    {...project}
+                    url={
+                      project.type === 'project' ? project.url : project.slug
+                    }
+                  />
                 ))}
               </div>
             </RoughNotation>
@@ -122,7 +128,7 @@ const PROJECTS: Project[] = [
     type: 'project',
   },
   {
-    slug: 'selectpluckpost',
+    slug: 'using-activerecord-select-instead-of-pluck',
     title: 'Using Select Instead of Pluck in ActiveRecord Queries',
     year: '2019',
     url: 'https://www.chapchair.com',

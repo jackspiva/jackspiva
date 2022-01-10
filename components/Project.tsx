@@ -16,7 +16,7 @@ export default function Project({
   type = 'project',
 }: Props) {
   return (
-    <Link href={url}>
+    <Link href={type === 'project' ? url : `/blog/${url}`}>
       <a className="w-full">
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">

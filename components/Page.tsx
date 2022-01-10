@@ -1,14 +1,17 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Footer from './Footer'
+import Header from './Header'
 
 interface PageProps {
   children: React.ReactNode
   customMeta?: { published_time: string }
+  showHeader: boolean
+  animateHeader: boolean
 }
 
 export default function Page(props: PageProps) {
-  const { children, customMeta } = props
+  const { children, customMeta, showHeader, animateHeader } = props
   const router = useRouter()
   const meta = {
     title: 'Jack Spiva',
@@ -54,6 +57,9 @@ export default function Page(props: PageProps) {
           >
             Skip to content
           </a>
+          <div className="flex-1">
+            {showHeader ? <Header animate={animateHeader} /> : null}
+          </div>
         </nav>
       </div>
       <main

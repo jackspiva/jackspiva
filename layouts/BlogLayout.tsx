@@ -8,7 +8,7 @@ export default function BlogLayout({
   post,
 }: PropsWithChildren<{ post: Blog }>) {
   return (
-    <Page>
+    <Page showHeader={true} animateHeader={false}>
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {post.title}
@@ -21,7 +21,7 @@ export default function BlogLayout({
             </p>
           </div>
         </div>
-        <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+        <div className="w-full mt-4 prose dark:text-white dark:prose-dark max-w-none">
           {children}
         </div>
       </article>

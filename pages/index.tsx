@@ -5,38 +5,19 @@ import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
+import Header from '@components/Header'
 
 const Home: NextPage = () => {
-  const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
 
   // After mounting, we have access to the theme
-  useEffect(() => setMounted(true), [])
   return (
-    <Page>
+    <Page showHeader={false} animateHeader={false}>
       <RoughNotationGroup>
         <div className="self-center max-w-3xl">
-          <div className="flex justify-between py-2">
-            <RoughNotation
-              animationDuration={600}
-              type="highlight"
-              show={true}
-              color={resolvedTheme === 'dark' ? '#9333ea' : '#e9d5ff'}
-            >
-              <h1 className="inline-block px-2 -ml-2 text-lg font-bold text-gray-900 md:text-2xl dark:text-gray-100">
-                Jack Spiva
-              </h1>
-            </RoughNotation>
-            <DarkModeButton
-              onClick={() =>
-                setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-              }
-              mounted={mounted}
-              resolvedTheme={resolvedTheme}
-            />
-          </div>
-          <div className="pt-8">
-            <p className="pt-4 text-lg text-gray-700 dark:text-gray-300">
+          <Header />
+          <div className="pt-12">
+            <p className="text-lg text-gray-700 dark:text-gray-300">
               <RoughNotation
                 animationDuration={600}
                 type="underline"

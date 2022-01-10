@@ -1,0 +1,47 @@
+---
+title: 'Query Objects in Rails'
+publishedAt: '2019-06-22'
+summary: 'A great pattern to prevent ActiveRecord code duplication and clean up cluttered models.'
+---
+
+I recently learned about query objects from [this](https://codeclimate.com/blog/7-ways-to-decompose-fat-activerecord-models/) blog post that a friend sent me (and then I did some further reading about them [here](https://medium.flatstack.com/query-object-in-ruby-on-rails-56ea434365f0)). They've been a great discovery and have really helped with cleaning up cluttered model code.
+
+Often I find myself writing ActiveRecord or SQL queries to fit somewhat vague terms given by other people on our team. For example, the term "Non Buyer" is used in some of our marketing tools, and it isn't obvious which segment of users we want to include in that group. There are several instances where it's not clear whether or not a user is a non-buyer. For example, if they purchased a product from us, but used a coupon for 100% off.
+
+In the past, I often found myself writing these queries based on whatever our definition was at the time, and then having to go through and update the same query in multiple different places if our definition changed. Probably a lot of that could have been solved with better scopes, model methods, etc, but query objects have stuck out to me as a more intuitive solution to this problem.
+
+In the app I'm working on currently, we just keep our query objects, which are POROs, in an `app/queries` directory. For the example term I gave earlier, "Non Buyer", we now have a query object `NonBuyersQuery` that looks roughly like this:
+
+```ruby
+Class NonBuyersQuery
+	def initialize(relation = User.all)
+		@relation = relation
+	end
+
+	def run
+		@relation.where.not(
+			id: purchaser_ids
+		).distinct
+	end
+
+	private
+
+	def purchaser_ids
+		Receipt.select(:user_id).not_free
+	end
+end
+```
+
+That's it! And you can see in that code one of the best parts about query objects, that they support composition with other query objects and ActiveRecord queries! That means not only can I get all users who are non buyers with:
+
+```ruby
+NonBuyersQuery.new
+```
+
+But I can also pass any query object or ActiveRecord relation straight to the non buyers query object and it will simply tell me which users in that relation are non buyers:
+
+```ruby
+NonBuyersQuery.new(
+	existing_users_relation
+)
+```

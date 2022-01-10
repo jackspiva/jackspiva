@@ -20,7 +20,7 @@ export default function Header({ animate = false }: Props) {
         <Link href="/">
           <a>
             <RoughNotation
-              animationDuration={animate ? 600 : undefined}
+              animationDuration={800}
               animate={animate}
               type="highlight"
               show={true}

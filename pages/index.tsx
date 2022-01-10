@@ -12,7 +12,7 @@ const Home: NextPage = () => {
     <Page showHeader={false} animateHeader={false}>
       <RoughNotationGroup>
         <div className="self-center max-w-3xl">
-          <Header />
+          <Header animate={true} />
           <div className="pt-12">
             <p className="text-lg text-gray-700 dark:text-gray-300">
               <RoughNotation
@@ -111,7 +111,16 @@ const PROJECTS: Project[] = [
     year: '2019',
     url: 'https://www.chapchair.com',
     summary:
-      'Building a custom Shopify storefront for Chapchair. Chapchairs are plastic containers specially adapted to receive and hold lip balm tubes.',
+      'A helpful tip to improve your ActiveRecord queries by using select instead of pluck in certain situations.',
+    type: 'post',
+  },
+  {
+    slug: 'query-objects-in-rails',
+    title: 'Query Objects in Rails',
+    year: '2019',
+    url: '',
+    summary:
+      'A great pattern to prevent ActiveRecord code duplication and clean up cluttered models.',
     type: 'post',
   },
 ]

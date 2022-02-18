@@ -1,5 +1,5 @@
 export const SITE_URL = 'https://jackspiva.dev'
-export const GH_USER_REPO = 'jackspiva/blog' // used for pulling github issues and offering comments
+export const GH_USER_REPO = 'jackspiva/jackspiva' // used for pulling github issues and offering comments
 export const REPO_URL = 'https://github.com/' + GH_USER_REPO
 export const SITE_TITLE = 'Jack Spiva'
 export const SITE_DESCRIPTION = "Jack Spiva's personal website"

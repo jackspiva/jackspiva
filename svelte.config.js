@@ -17,7 +17,7 @@ const mdsvexConfig = {
 			remarkGithub,
 			{
 				// Use your own repository
-				repository: 'https://github.com/jackspiva/jackspiva.git'
+				repository: 'https://github.com/mvasigh/sveltekit-mdsvex-blog.git'
 			}
 		],
 		remarkAbbr

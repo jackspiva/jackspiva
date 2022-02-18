@@ -1,0 +1,11 @@
+<script context="module">
+  // disabled hydrate = false because mobile nav becomes unresponsive :(
+  // TODO: other options for mobile nav
+  // export const hydrate = false // about pages dont need it!
+  // more info https://twitter.com/Rich_Harris/status/1376578504704331778?s=20
+</script>
+
+## About
+
+Jack Spiva is a Nashville based software engineer mainly focused on Ruby on Rails, React, and Svelte. Interested in most things, especially music, video games, reading, and being outside.
+

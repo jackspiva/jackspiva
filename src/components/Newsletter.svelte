@@ -50,7 +50,7 @@
 		{#if isNewsletterOpen}
 			<p class="my-1 text-gray-800 dark:text-gray-200">
 				Get emails from me about <span class="font-bold"
-					>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero, ducimus.</span
+					>Lorem ipsum dolor sit, amet adipisicing elit. Libero, ducimus.</span
 				>.
 			</p>
 

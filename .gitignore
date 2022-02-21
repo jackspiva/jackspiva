@@ -7,6 +7,3 @@ node_modules
 /static/tailwind.css
 /src/lib/sampledata.json
 .env
-
-# Local Netlify folder
-.netlify

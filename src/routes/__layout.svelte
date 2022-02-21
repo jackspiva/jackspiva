@@ -8,12 +8,6 @@
 </script>
 
 <svelte:head>
-	<link
-		rel="alternate"
-		type="application/rss+xml"
-		title={'RSS Feed for ' + SITE_TITLE}
-		href="/rss.xml"
-	/>
 	<meta name="theme-color" content="#facc15" media="(prefers-color-scheme: light)" />
 	<meta name="theme-color" content="#3730a3" media="(prefers-color-scheme: dark)" />
 </svelte:head>
@@ -32,9 +26,6 @@
 			<a class="text-gray-500 transition hover:text-gray-300" href="/">Home</a>
 			<a class="text-gray-500 transition hover:text-gray-300" href="/about">About</a>
 			<a class="text-gray-500 transition hover:text-gray-300" href="/#newsletter">Newsletter</a>
-			<a class="text-gray-500 transition hover:text-gray-300" href="/api/rss.xml" rel="external">
-				RSS
-			</a>
 		</div>
 		<div class="flex flex-col space-y-4">
 			<a

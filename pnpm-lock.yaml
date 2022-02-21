@@ -33,7 +33,6 @@ specifiers:
   remark-sectionize: ^1.1.1
   remark-slug: ^6.1.0
   remark-toc: ^7.2.0
-  rss: ^1.2.2
   shiki: ^0.10.0
   slugify: ^1.6.5
   snarkdown: ^2.0.0
@@ -85,7 +84,6 @@ devDependencies:
   remark-sectionize: 1.1.1
   remark-slug: 6.1.0
   remark-toc: 7.2.0
-  rss: 1.2.2
   svelte: 3.46.4
   svelte-check: 2.4.5_06670835898ebc1da7d1c97a8716c619
   svelte-preprocess: 4.10.3_e1bf482d98c0166a5d6196b4af1639d5
@@ -1719,18 +1717,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /mime-db/1.25.0:
-    resolution: {integrity: sha1-wY29fHOl2/b0SgJNwNFloeexw5I=}
-    engines: {node: '>= 0.6'}
-    dev: true
-
-  /mime-types/2.1.13:
-    resolution: {integrity: sha1-4HqqnGxrmnyjASxpADrSWjnpKog=}
-    engines: {node: '>= 0.6'}
-    dependencies:
-      mime-db: 1.25.0
-    dev: true
-
   /min-indent/1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
@@ -2176,13 +2162,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
-
-  /rss/1.2.2:
-    resolution: {integrity: sha1-UKFpiHYTgTOnT5oF0r3I240nqSE=}
-    dependencies:
-      mime-types: 2.1.13
-      xml: 1.0.1
     dev: true
 
   /run-parallel/1.2.0:
@@ -2810,10 +2789,6 @@ packages:
 
   /wrappy/1.0.2:
     resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
-    dev: true
-
-  /xml/1.0.1:
-    resolution: {integrity: sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=}
     dev: true
 
   /xtend/4.0.2:

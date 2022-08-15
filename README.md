@@ -1,5 +1,3 @@
-# My Personal Website!
+My Personal Website!
 
-## Acknowledgements
-
-- swyxkit from swyx: https://github.com/sw-yx/swyxkit
+Based on https://github.com/withastro/astro/tree/main/examples/blog.

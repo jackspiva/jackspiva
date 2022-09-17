@@ -1,0 +1,35 @@
+import { PostLayout } from '@/components/PostLayout'
+
+export const meta = {
+  author: 'Jack Spiva',
+  date: '2019-06-03',
+  title: 'Better ActiveRecord Queries with the Merge Method',
+  description:
+    'A coworker of mine recently introduced me to ActiveRecord’s merge method, which has allowed me to really improve the modularity and clarity of my queries.',
+}
+
+export default (props) => <PostLayout meta={meta} {...props} />
+
+A coworker of mine recently started using a new ActiveRecord syntax that has made a lot of our queries much cleaner and more powerful. Ever since I started using ActiveRecord I've struggled to find a good way to write queries where I use a scope from a model that is being joined to the primary table. This solved that!
+
+The most common use case I've seen so far with this is when we are grabbing some sort of data from our database, but want to exclude a certain subset rows because they are associated with test users instead of real ones. This comes up all the time, like when we're reporting on revenue and want to exclude any purchases made by a user who has an email address from our company. In the past, I'd write a query like this:
+
+```ruby
+Purchase.joins(:user).where("users.email not like '%mycompany.com'")
+```
+
+This works fine, but isn't ideal for a few reasons. One is that it's annoying to write that over and over again, especially if we already have a scope defined in the users model that does the exact same query. For example,
+
+```ruby
+scope :where_not_company_affiliated, -> {
+  where("users.email not like '%mycompany.com'")
+}
+```
+
+Another reason the first query isn't ideal is that any time we want to add to the logic of which users we exclude, we have to update every query that has the `.where("users.email not like '%mycompany.com'")` line in it. Additionally, it's just not great for these queries related to the purchases table to rely on specific column values in a separate table. The merge method that I've started using allows us to just use an existing scope in the users table. So now I write the following:
+
+```ruby
+Purchase.joins(:user).merge(User.where_not_company_affiliated)
+```
+
+Way cleaner! Now if we ever want to change who exclude from our reporting, we can just update the scope in the user model instead of updating every single query related to purchase reporting.

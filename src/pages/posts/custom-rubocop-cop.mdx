@@ -1,0 +1,42 @@
+import { PostLayout } from '@/components/PostLayout'
+
+export const meta = {
+  author: 'Jack Spiva',
+  date: '2022-10-20',
+  title: 'Writing a Custom Cop for RuboCop',
+  description: 'A quick example of a custom cop for RuboCop I wrote recently',
+}
+
+export default (props) => <PostLayout meta={meta} {...props} />
+
+I wrote my first custom cop for RuboCop recently and wanted to document it here. There are a lot of really high quality resources on writing custom cops for RuboCop out there. Here are the ones I looked at:
+
+- [The RuboCop documentaiton on custom cops](https://docs.rubocop.org/rubocop/development.html)
+- [An Evil Martians blog post about writing custom cops](https://evilmartians.com/chronicles/custom-cops-for-rubocop-an-emergency-service-for-your-codebase)
+- [A Thoughtbot blog post about writing custom cops](https://thoughtbot.com/blog/rubocop-custom-cops-for-custom-needs)
+
+At my current job we're using the excellent [Money gem](https://github.com/RubyMoney/money) for dealing with money and currency conversion. The gem provides two different ways of initializing a `Money` object: `Money.new(...)` and `Money.from_cents(...)`. Both methods take a number of cents and create a `Money` object, but I strongly prefer `Money.from_cents` because it's much clearer what kind of argument it is expecting. So my team decided it would be nice to have a RuboCop cop to enforce that we always use `Money.from_cents` instead of `Money.new`.
+
+Here's the code for the cop I ended up writing:
+
+```ruby
+module Cops
+  class DisallowMoneyNew < RuboCop::Cop::Base
+    def_node_matcher :using_money_new?, <<~PATTERN
+      (send (const nil? :Money) :new $...)
+    PATTERN
+
+    def on_send(node)
+      return unless using_money_new?(node)
+
+      add_offense(node, message: "Use Money.from_cents instead of Money.new")
+    end
+  end
+end
+```
+
+Simple enough! There's definitely more RuboCop allows you to do also, like adding code for autocorrect which would probably be pretty straightforward in this case.
+
+I found writing the node matcher and understanding [node pattern rules](https://docs.rubocop.org/rubocop/development.html#writing-node-pattern-rules) to be the most confusing part of it, but luckily there are a lot of examples out there to go off of. Overall I found the process simple enough that I think writing custom cops like this is totally worth the time. It's a really great way to enforce patterns that your team agrees on beyond just documenting them somewhere and hopoing no one forgets.
+
+One more thing — as part of this I created [a pull request](https://github.com/RubyMoney/money/pull/1032) to add a new initializer `Money.from_dollars` to the `Money` gem. I think it would be a nice complement to the `Money.from_cents` intiailizer and clearer than the existing `Money.from_amount` intiailizer. The repo doesn't seem super active these days, but hopefully they accept it!
